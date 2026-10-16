@@ -6,7 +6,7 @@ import subprocess
 import threading
 from pathlib import Path
 from tkinter import filedialog, messagebox
-
+from src.bemVindo import BoasVindas
 import customtkinter as ctk
 import pymupdf as fitz
 from PIL import Image, ImageDraw
@@ -804,6 +804,18 @@ class Acervo(ctk.CTk):
 # INICIALIZAÇÃO
 # =========================================================
 
+
 if __name__ == "__main__":
     app = Acervo()
+
+    # Esconde a janela principal enquanto mostra as boas-vindas.
+    app.withdraw()
+
+    # Abre a tela de boas-vindas.
+    tela_boas_vindas = BoasVindas(
+        parent=app,
+        ao_avancar=app.deiconify,
+        ao_cancelar=app.destroy
+    )
+
     app.mainloop()
